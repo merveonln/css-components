@@ -111,7 +111,6 @@ button:hover {
     animation: rotate 8s linear infinite;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
