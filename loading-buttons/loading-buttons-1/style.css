@@ -1,0 +1,124 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0;
+}
+
+.btn {
+    padding: 15px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.spinner-button {
+    background: #4CAF50;
+    color: white;
+}
+
+.spinner-button.loading {
+    padding-right: 40px;
+}
+
+.spinner-button.loading:after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    border: 3px solid #FFF;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.dots-button {
+    background: #2196F3;
+    color: white;
+}
+
+.dots-button.loading:after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;
+}
+
+.wave-button {
+    background: #9C27B0;
+    color: white;
+}
+
+.wave-button.loading {
+    background: linear-gradient(90deg, #9C27B0 25%, #BA68C8 50%, #9C27B0 75%);
+    background-size: 200% 100%;
+    animation: wave 1.5s infinite;
+}
+
+.progress-button {
+    background: #FF5722;
+    color: white;
+}
+
+.progress-button.loading {
+    background: linear-gradient(to right, #FF5722 50%, #ff8a65 50%);
+    background-size: 200% 100%;
+    animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dots {
+
+    0%,
+    20% {
+        content: ' .';
+    }
+
+    40% {
+        content: ' ..';
+    }
+
+    60% {
+        content: ' ...';
+    }
+
+    80%,
+    100% {
+        content: '';
+    }
+}
+
+@keyframes wave {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes progress {
+    0% {
+        background-position: 100% 0;
+    }
+
+    50% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
