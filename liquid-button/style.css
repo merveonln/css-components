@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Arial', sans-serif;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.liquid-button {
+    position: relative;
+    width: 250px;
+    height: 70px;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    transition: all 0.4s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.liquid {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-radius: 50%;
+    filter: blur(3px);
+    opacity: 0.9;
+}
+
+.liquid::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    animation: liquidShine 3s ease-in-out infinite;
+}
+
+@keyframes liquidShine {
+    0%, 100% {
+        transform: translate(-25%, -25%) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(0%, 0%) scale(1);
+        opacity: 1;
+    }
+}
+
+.liquid-button:hover .liquid {
+    top: 0;
+    border-radius: 50% 50% 0 0;
+    filter: blur(0);
+    opacity: 1;
+    animation: liquidPulse 1.5s ease-in-out infinite;
+}
+
+.liquid-button:active .liquid {
+    top: 0;
+    border-radius: 0;
+    filter: blur(0);
+}
+
+.liquid-button:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow:
+        0 15px 50px rgba(102, 126, 234, 0.6),
+        0 0 80px rgba(118, 75, 162, 0.4),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.liquid-button:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.liquid-button-2 .liquid {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.liquid-button-2:hover .liquid {
+    width: 150%;
+    height: 150%;
+    top: 50%;
+    border-radius: 50%;
+    opacity: 1;
+    animation: wave 0.8s ease-in-out infinite, rotate360 4s linear infinite;
+}
+
+@keyframes rotate360 {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes wave {
+    0%, 100% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+
+    25% {
+        border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+    }
+
+    50% {
+        border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+    }
+
+    75% {
+        border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+    }
+}
+
+.liquid-button-3 .liquid {
+    background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 50%, #2BFF88 100%);
+    background-size: 200% 200%;
+    top: 100%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+}
+
+.liquid-button-3:hover .liquid {
+    top: -50%;
+    left: -50%;
+    animation: bubble 1s ease-in-out infinite, gradientMove 3s ease infinite;
+}
+
+@keyframes gradientMove {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes bubble {
+    0%, 100% {
+        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+        transform: rotate(180deg) scale(1.1);
+    }
+}
+
+.liquid-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+    transform: translate(-50%, -50%);
+    transition: width 0.8s ease-out, height 0.8s ease-out, opacity 0.8s;
+    z-index: 1;
+    opacity: 0;
+}
+
+.liquid-button:active::before {
+    width: 350px;
+    height: 350px;
+    opacity: 1;
+}
+
+.liquid-button::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg,
+            #667eea, #764ba2, #f093fb, #f5576c,
+            #667eea, #764ba2, #f093fb, #f5576c);
+    border-radius: 50px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background-size: 400%;
+    animation: gradientShift 4s linear infinite;
+}
+
+.liquid-button:hover::after {
+    opacity: 0.8;
+    filter: blur(15px);
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 400% 50%;
+    }
+}
+
+@keyframes liquidPulse {
+    0%, 100% {
+        border-radius: 50% 50% 0 0;
+        transform: scaleY(1);
+    }
+    50% {
+        border-radius: 60% 40% 0 0;
+        transform: scaleY(1.05);
+    }
+}
+
+@media (max-width: 768px) {
+    .liquid-button {
+        width: 200px;
+        height: 60px;
+        font-size: 16px;
+    }
+
+    .container {
+        gap: 30px;
+    }
+}
