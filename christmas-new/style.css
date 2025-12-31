@@ -1,0 +1,495 @@
+:root {
+    --primary-red: #d42426;
+    --dark-red: #a81d1f;
+    --gold: #fccb00;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(rgba(13, 43, 26, 0.3), rgba(26, 71, 42, 0.3)),
+        url('background.png') center/cover no-repeat fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Arka Plan Süsleri (Kar ve Hediyeler) */
+.decoration-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.item {
+    position: absolute;
+    top: -50px;
+    animation: fall linear infinite;
+    color: white;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* Zarf ve Kart Yapısı */
+.page-title {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4.5rem;
+    font-family: 'Great Vibes', cursive;
+    color: #fff;
+    text-shadow:
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 40px rgba(255, 215, 0, 0.6),
+        2px 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    transition: all 0.8s ease;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.envelope-wrapper.open~.page-title,
+.page-title.hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50px) scale(0.8);
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 350px;
+    height: 230px;
+    cursor: pointer;
+    z-index: 10;
+    perspective: 1000px;
+    transition: transform 0.3s ease;
+}
+
+.envelope-wrapper:hover:not(.open) {
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+    }
+
+    75% {
+        transform: rotate(5deg);
+    }
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-red);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Zarfın Ön Yüzü */
+.envelope::before {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    border-top: 115px solid transparent;
+    border-right: 175px solid #e6393b;
+    border-bottom: 115px solid #e6393b;
+    border-left: 175px solid transparent;
+    bottom: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Üst Kapak */
+.flap {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 175px solid transparent;
+    border-right: 175px solid transparent;
+    border-top: 130px solid var(--dark-red);
+    transform-origin: top;
+    transition: transform 0.5s ease;
+    z-index: 6;
+}
+
+/* Mesaj Kartı */
+.card {
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    width: 300px;
+    height: 200px;
+    background:
+        linear-gradient(135deg, rgba(255, 250, 245, 0.90) 0%, rgba(255, 245, 240, 0.90) 100%),
+        url('card-background.png') center/cover;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    padding: 25px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.15),
+        inset 0 0 60px rgba(255, 192, 203, 0.1);
+    border: 1px solid #ffd700;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(176, 224, 230, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(152, 216, 200, 0.1) 0%, transparent 50%);
+    animation: gentleGlow 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gentleGlow {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+}
+
+.card h2 {
+    color: #8b0000;
+    margin: 0 0 20px 0;
+    font-size: 2.8rem;
+    font-family: 'Great Vibes', cursive;
+    text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+    font-weight: 400;
+}
+
+.card p {
+    font-size: 1.15rem;
+    color: #2c3e50;
+    line-height: 1.8;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 2;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 0 85px;
+}
+
+/* AÇIK HALİ */
+.envelope-wrapper.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope-wrapper.open .card {
+    transform: translateY(-300px) scale(2.2);
+    width: 500px;
+    height: 450px;
+    left: 50%;
+    bottom: -160%;
+    margin-left: -250px;
+    margin-bottom: -90px;
+    z-index: 50;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    padding: 35px 40px;
+    border-radius: 15px;
+}
+
+.music-note {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    display: none;
+    filter: drop-shadow(2px 2px 4px rgba(139, 0, 0, 0.3));
+}
+
+.open .music-note {
+    display: block;
+    animation: gentlePulse 2s infinite;
+}
+
+@keyframes gentlePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.card-footer {
+    margin-top: 18px;
+    font-weight: 600;
+    color: #c41e3a;
+    /* border-top: 2px solid rgba(255, 192, 203, 0.4); */
+    padding-top: 12px;
+    font-size: 1.25rem;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 1px 1px 2px rgba(196, 30, 58, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.bear-couple {
+    margin: 18px 0;
+    font-size: 65px;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.1));
+}
+
+.snowflake-decoration {
+    position: absolute;
+    font-size: 18px;
+    animation: gentleFloat 4s ease-in-out infinite;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.snowflake-decoration:nth-child(1) {
+    top: 8%;
+    left: 5%;
+    animation-delay: 0s;
+    content: '❄️';
+}
+
+.snowflake-decoration:nth-child(2) {
+    top: 12%;
+    right: 8%;
+    animation-delay: 1s;
+}
+
+.snowflake-decoration:nth-child(3) {
+    bottom: 25%;
+    left: 8%;
+    animation-delay: 2s;
+}
+
+.snowflake-decoration:nth-child(4) {
+    bottom: 18%;
+    right: 10%;
+    animation-delay: 1.5s;
+}
+
+@keyframes gentleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(5deg);
+        opacity: 0.5;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 4rem;
+        top: 50px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .envelope-wrapper {
+        width: 280px;
+        height: 180px;
+    }
+
+    .envelope::before {
+        border-top: 90px solid transparent;
+        border-right: 140px solid #e6393b;
+        border-bottom: 90px solid #e6393b;
+        border-left: 140px solid transparent;
+    }
+
+    .flap {
+        border-left: 140px solid transparent;
+        border-right: 140px solid transparent;
+        border-top: 100px solid var(--dark-red);
+    }
+
+    .card {
+        width: 240px;
+        height: 160px;
+        left: 20px;
+        padding: 15px;
+    }
+
+    .envelope-wrapper.open .envelope,
+    .envelope-wrapper.open .flap {
+        display: none !important;
+    }
+
+    .envelope-wrapper.open .card {
+        position: fixed !important;
+        transform: none !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        left: -9vh !important;
+        top: -38vh !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        margin: 0 !important;
+        padding: 50px 25px !important;
+        max-width: none;
+        max-height: none;
+        border-radius: 0;
+        background:
+            linear-gradient(135deg, rgba(255, 250, 245, 0.99) 0%, rgba(255, 245, 240, 0.99) 100%),
+            url('bg-2.png') center/cover;
+        background-blend-mode: overlay;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        overflow: hidden !important;
+        z-index: 9999 !important;
+        box-sizing: border-box !important;
+    }
+
+    .card h2 {
+        font-size: 3.6rem;
+        margin: 10px 0;
+        line-height: 1.2;
+        text-shadow:
+            3px 3px 6px rgba(139, 0, 0, 0.5),
+            1px 1px 3px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(255, 255, 255, 0.9);
+        color: #8b0000;
+    }
+
+    .card p {
+        font-size: 2.1rem;
+        line-height: 1.6;
+        padding: 0 15px;
+        margin-bottom: 10px;
+        max-width: 90%;
+        text-shadow:
+            2px 2px 4px rgba(255, 255, 255, 1),
+            1px 1px 2px rgba(0, 0, 0, 0.2),
+            0 0 15px rgba(255, 255, 255, 0.8);
+        color: #1a1a1a;
+        font-weight: 700;
+    }
+
+    .card-footer {
+        font-size: 2.2rem;
+        margin-top: 10px;
+        text-shadow:
+            2px 2px 5px rgba(196, 30, 58, 0.4),
+            1px 1px 3px rgba(0, 0, 0, 0.2),
+            0 0 15px rgba(255, 255, 255, 0.9);
+        color: #c41e3a;
+    }
+
+    .bear-couple {
+        font-size: 50px;
+        margin: 15px 0;
+    }
+
+    .music-note {
+        font-size: 24px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .snowflake-decoration {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .envelope-wrapper.open .card {
+        padding: 40px 20px !important;
+    }
+
+    .card h2 {
+        font-size: 3.6rem;
+        margin: 8px 0;
+        text-shadow:
+            3px 3px 6px rgba(139, 0, 0, 0.5),
+            1px 1px 3px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(255, 255, 255, 0.9);
+    }
+
+    .card p {
+        font-size: 2.1rem;
+        line-height: 1.5;
+        padding: 0 10px;
+        text-shadow:
+            2px 2px 4px rgba(255, 255, 255, 1),
+            1px 1px 2px rgba(0, 0, 0, 0.2),
+            0 0 15px rgba(255, 255, 255, 0.8);
+        color: #1a1a1a;
+        font-weight: 700;
+    }
+
+    .card-footer {
+        font-size: 2.2rem;
+        text-shadow:
+            2px 2px 5px rgba(196, 30, 58, 0.4),
+            1px 1px 3px rgba(0, 0, 0, 0.2),
+            0 0 15px rgba(255, 255, 255, 0.9);
+    }
+
+    .bear-couple {
+        font-size: 40px;
+    }
+
+    .music-note {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,404 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Havai Fişek Animasyonu */
+.fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    animation: firework 2s ease-out infinite;
+}
+
+.firework:nth-child(1) {
+    left: 20%;
+    animation-delay: 0s;
+    background: radial-gradient(circle, #ff00ff, transparent);
+}
+
+.firework:nth-child(2) {
+    left: 40%;
+    animation-delay: 0.5s;
+    background: radial-gradient(circle, #00ffff, transparent);
+}
+
+.firework:nth-child(3) {
+    left: 60%;
+    animation-delay: 1s;
+    background: radial-gradient(circle, #ffff00, transparent);
+}
+
+.firework:nth-child(4) {
+    left: 80%;
+    animation-delay: 1.5s;
+    background: radial-gradient(circle, #ff0080, transparent);
+}
+
+.firework:nth-child(5) {
+    left: 50%;
+    animation-delay: 0.75s;
+    background: radial-gradient(circle, #00ff80, transparent);
+}
+
+@keyframes firework {
+    0% {
+        top: 100%;
+        opacity: 1;
+        box-shadow: 
+            0 0 0 0 currentColor,
+            0 0 0 0 currentColor,
+            0 0 0 0 currentColor,
+            0 0 0 0 currentColor;
+    }
+    50% {
+        top: 20%;
+        opacity: 1;
+    }
+    100% {
+        top: 20%;
+        opacity: 0;
+        box-shadow: 
+            0 -100px 50px 10px #ff00ff,
+            100px 0 50px 10px #00ffff,
+            0 100px 50px 10px #ffff00,
+            -100px 0 50px 10px #ff0080;
+    }
+}
+
+/* Kar Taneleri */
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10%;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    animation: snowfall linear infinite;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.snowflake:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 15%; animation-duration: 10s; animation-delay: 1s; font-size: 25px; }
+.snowflake:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 2s; }
+.snowflake:nth-child(4) { left: 35%; animation-duration: 9s; animation-delay: 0.5s; font-size: 18px; }
+.snowflake:nth-child(5) { left: 45%; animation-duration: 11s; animation-delay: 1.5s; }
+.snowflake:nth-child(6) { left: 55%; animation-duration: 13s; animation-delay: 0.8s; font-size: 22px; }
+.snowflake:nth-child(7) { left: 65%; animation-duration: 10s; animation-delay: 2.5s; }
+.snowflake:nth-child(8) { left: 75%; animation-duration: 14s; animation-delay: 1.2s; font-size: 19px; }
+.snowflake:nth-child(9) { left: 85%; animation-duration: 9s; animation-delay: 3s; }
+.snowflake:nth-child(10) { left: 95%; animation-duration: 11s; animation-delay: 0.3s; font-size: 24px; }
+.snowflake:nth-child(11) { left: 10%; animation-duration: 15s; animation-delay: 2s; }
+.snowflake:nth-child(12) { left: 30%; animation-duration: 12s; animation-delay: 1s; font-size: 21px; }
+.snowflake:nth-child(13) { left: 50%; animation-duration: 10s; animation-delay: 2.5s; }
+.snowflake:nth-child(14) { left: 70%; animation-duration: 13s; animation-delay: 0.5s; font-size: 23px; }
+.snowflake:nth-child(15) { left: 90%; animation-duration: 11s; animation-delay: 1.8s; }
+
+@keyframes snowfall {
+    0% {
+        top: -10%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 110%;
+        opacity: 0;
+        transform: translateX(50px) rotate(360deg);
+    }
+}
+
+/* Ana Container */
+.container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 40px;
+}
+
+/* Yıl Değişimi */
+.year-container {
+    position: relative;
+    height: 200px;
+    margin-bottom: 50px;
+}
+
+.year-old,
+.year-new {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 120px;
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+
+.year-old {
+    color: rgba(255, 255, 255, 0.3);
+    animation: yearOut 4s ease-in-out infinite;
+}
+
+.year-new {
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: yearIn 4s ease-in-out infinite, gradientShift 3s linear infinite;
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes yearOut {
+    0%, 40% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+    50%, 100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-100px) scale(0.5);
+    }
+}
+
+@keyframes yearIn {
+    0%, 40% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(100px) scale(0.5);
+    }
+    50%, 100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+/* Mesaj */
+.message {
+    margin-bottom: 50px;
+}
+
+.glitter-text {
+    font-size: 56px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    text-shadow: 
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #ff00ff,
+        0 0 40px #ff00ff,
+        0 0 50px #ff00ff,
+        0 0 60px #ff00ff,
+        0 0 70px #ff00ff;
+    animation: glitter 2s ease-in-out infinite;
+}
+
+@keyframes glitter {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 30px #ff00ff,
+            0 0 40px #ff00ff,
+            0 0 50px #ff00ff,
+            0 0 60px #ff00ff,
+            0 0 70px #ff00ff;
+    }
+    50% {
+        text-shadow: 
+            0 0 20px #fff,
+            0 0 30px #00ffff,
+            0 0 40px #00ffff,
+            0 0 50px #00ffff,
+            0 0 60px #00ffff,
+            0 0 70px #00ffff,
+            0 0 80px #00ffff;
+    }
+}
+
+.subtitle {
+    font-size: 24px;
+    color: #00ffff;
+    letter-spacing: 4px;
+    margin-top: 20px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+/* Geri Sayım */
+.countdown {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+    animation: countdownPulse 1s ease-in-out infinite;
+}
+
+.countdown-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.countdown-item:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes countdownPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 
+            0 8px 32px rgba(255, 0, 255, 0.5),
+            inset 0 0 30px rgba(255, 255, 255, 0.2);
+    }
+}
+
+.countdown-number {
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+.countdown-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+}
+
+/* Parıltılar */
+.sparkles {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.sparkles span {
+    font-size: 40px;
+    animation: sparkle 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px #ffff00);
+}
+
+.sparkles span:nth-child(1) { animation-delay: 0s; }
+.sparkles span:nth-child(2) { animation-delay: 0.2s; }
+.sparkles span:nth-child(3) { animation-delay: 0.4s; }
+.sparkles span:nth-child(4) { animation-delay: 0.6s; }
+.sparkles span:nth-child(5) { animation-delay: 0.8s; }
+.sparkles span:nth-child(6) { animation-delay: 1s; }
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .year-old,
+    .year-new {
+        font-size: 80px;
+    }
+    
+    .glitter-text {
+        font-size: 36px;
+        letter-spacing: 4px;
+    }
+    
+    .subtitle {
+        font-size: 18px;
+    }
+    
+    .countdown {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .countdown-item {
+        padding: 15px 20px;
+    }
+    
+    .countdown-number {
+        font-size: 36px;
+    }
+    
+    .sparkles span {
+        font-size: 30px;
+    }
+}

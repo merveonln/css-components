@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yeni Yıl Kartı</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle, #0b1d33, #020814);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Envelope */
+.envelope {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  cursor: pointer;
+}
+
+/* Envelope body */
+.envelope .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #c0392b;
+  border-radius: 6px;
+  z-index: 1;
+}
+
+/* Envelope flap */
+.envelope .flap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #e74c3c;
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+  transform-origin: top;
+  transition: transform 1s ease;
+  z-index: 3;
+}
+
+/* Card */
+.card {
+  position: absolute;
+  width: 90%;
+  height: 180px;
+  background: #fff;
+  left: 5%;
+  top: 10px;
+  border-radius: 6px;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  transform: translateY(80px);
+  transition: transform 1.2s ease;
+  z-index: 2;
+}
+
+.card h1 {
+  color: #c0392b;
+  margin: 10px 0;
+}
+
+.card p {
+  color: #333;
+  font-size: 15px;
+}
+
+/* Open state */
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .card {
+  transform: translateY(-120px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" id="envelope">
+  <div class="flap"></div>
+  <div class="back"></div>
+
+  <div class="card">
+    <h1>🎄 Mutlu Yıllar</h1>
+    <p>
+      Yeni yıl;<br>
+      umut, sağlık ve adalet getirsin.<br>
+      Güzel günlerde buluşmak dileğiyle ✨
+    </p>
+  </div>
+</div>
+
+<script>
+const envelope = document.getElementById("envelope");
+envelope.addEventListener("click", () => {
+  envelope.classList.toggle("open");
+});
+</script>
+
+</body>
+</html>
