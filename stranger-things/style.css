@@ -54,7 +54,6 @@ body.bg-visible::before {
     }
 }
 
-/* Arka plandaki dev 5 rakamı */
 .number-5 {
     position: fixed;
     font-size: 40rem;
@@ -111,7 +110,6 @@ body.bg-visible::before {
     z-index: 2;
 }
 
-/* Ana yazı stili - İçi boş, sadece kırmızı kontur */
 .text {
     color: transparent;
     -webkit-text-stroke: 2px #ff1a1a;
@@ -216,7 +214,6 @@ body.bg-visible::before {
     }
 }
 
-/* Stranger üzerindeki çift çizgi */
 .stranger::before {
     content: "";
     position: absolute;
@@ -264,7 +261,6 @@ body.animating .stranger::before {
     }
 }
 
-/* Things yazısı ve yanındaki çizgiler */
 .things-row {
     display: flex;
     align-items: center;
@@ -338,7 +334,6 @@ body.animating .stranger::before {
     }
 }
 
-/* Yan çizgiler */
 .side-line {
     width: 0;
     height: 6px;
@@ -384,7 +379,6 @@ body.animating .stranger::before {
     margin: 0 0 0 10px;
 }
 
-/* Input controls */
 .controls {
     position: fixed;
     bottom: 30px;
@@ -460,7 +454,6 @@ body.animating .stranger::before {
     transform: scale(0.95);
 }
 
-/* Input controls */
 .controls {
     position: fixed;
     bottom: 30px;
@@ -516,7 +509,6 @@ body.animating .stranger::before {
     color: #00ff00;
 }
 
-/* Initial screen */
 .initial-screen {
     position: fixed;
     width: 100%;
@@ -580,7 +572,6 @@ body.animating .stranger::before {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
-/* Initial screen static styles */
 .initial-screen .stranger .big-letter {
     opacity: 1;
     filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
@@ -602,7 +593,6 @@ body.animating .stranger::before {
     border-radius: 3px;
 }
 
-/* Controls animation */
 @keyframes slideDown {
     from {
         transform: translateX(-50%) translateY(-100vh);
@@ -644,7 +634,6 @@ body.animating .stranger::before {
     transform: scale(0.95);
 }
 
-/* Season Navigation */
 .season-navigation {
     position: fixed;
     right: 30px;
@@ -713,7 +702,6 @@ body.animating .stranger::before {
     transform: scale(0.95);
 }
 
-/* Start Music Overlay */
 .start-music-overlay {
     position: fixed;
     top: 0;

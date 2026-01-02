@@ -10,16 +10,13 @@
 </head>
 
 <body>
-    <!-- Background music -->
     <audio id="introMusic" loop>
     </audio>
 
-    <!-- Start Music Button -->
     <div class="start-music-overlay" id="startMusicOverlay">
         <button class="start-music-btn" id="startMusicBtn">CLICK TO START</button>
     </div>
 
-    <!-- Season Navigation -->
     <div class="season-navigation" id="seasonNav">
         <button class="season-btn" onclick="changeSeason(5)" data-season="5">5</button>
         <button class="season-btn" onclick="changeSeason(4)" data-season="4">4</button>
@@ -28,7 +25,6 @@
         <button class="season-btn" onclick="changeSeason(1)" data-season="1">1</button>
     </div>
 
-    <!-- Click text overlay -->
     <div class="click-text" id="clickText" style="opacity: 0; pointer-events: none;" onclick="showInputs()">Click to
         customize</div>
 
