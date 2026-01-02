@@ -1,0 +1,766 @@
+body,
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    /* background-color: #000; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Crimson Text', serif;
+    position: relative;
+    --bg-image: url('stranger-things-season5.png');
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-image) no-repeat center center fixed;
+    background-size: cover;
+    filter: brightness(0.5);
+    z-index: -1;
+    opacity: 1;
+    transition: background 1.2s ease-in-out;
+}
+
+body.bg-visible::before {
+    opacity: 1;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: zoomOut 4s ease-out forwards;
+    animation-play-state: paused;
+    transition: opacity 0.5s ease-out;
+    opacity: 0;
+}
+
+@keyframes zoomOut {
+    0% {
+        transform: scale(4);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Arka plandaki dev 5 rakamı */
+.number-5 {
+    position: fixed;
+    font-size: 40rem;
+    font-weight: 900;
+    color: rgba(200, 0, 0, 0.3);
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: glowNumber 3s ease-out 4.2s forwards;
+    animation-play-state: paused;
+}
+
+@keyframes glowNumber {
+    0% {
+        opacity: 0;
+        text-shadow: 0 0 0px rgba(255, 0, 0, 0);
+        color: rgba(200, 0, 0, 0);
+    }
+
+    20% {
+        opacity: 1;
+        text-shadow:
+            0 0 200px rgba(255, 0, 0, 1),
+            0 0 150px rgba(255, 0, 0, 1),
+            0 0 100px rgba(255, 0, 0, 0.9),
+            0 0 50px rgba(255, 0, 0, 0.8);
+        color: rgba(255, 50, 50, 0.6);
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow:
+            0 0 180px rgba(255, 0, 0, 0.95),
+            0 0 120px rgba(255, 0, 0, 0.8),
+            0 0 80px rgba(255, 0, 0, 0.7),
+            0 0 40px rgba(255, 0, 0, 0.6);
+        color: rgba(255, 30, 30, 0.5);
+    }
+
+    100% {
+        opacity: 1;
+        text-shadow:
+            0 0 80px rgba(255, 0, 0, 0.6),
+            0 0 50px rgba(255, 0, 0, 0.4),
+            0 0 30px rgba(255, 0, 0, 0.3);
+        color: rgba(200, 0, 0, 0.3);
+    }
+}
+
+.logo-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+/* Ana yazı stili - İçi boş, sadece kırmızı kontur */
+.text {
+    color: transparent;
+    -webkit-text-stroke: 2px #ff1a1a;
+    text-transform: uppercase;
+    line-height: 0.8;
+    letter-spacing: -2px;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+}
+
+.stranger {
+    font-size: 6rem;
+    display: block;
+    position: relative;
+    transform: scaleY(1.2);
+}
+
+.stranger .big-letter {
+    font-size: 9rem;
+    position: relative;
+    top: 0.20em;
+    display: inline-block;
+}
+
+.stranger .big-letter:first-child {
+    opacity: 0;
+    filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+    animation: letterS 4s ease-out 0.3s forwards;
+    animation-play-state: paused;
+}
+
+.stranger .big-letter:last-child {
+    opacity: 0;
+    filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+    animation: letterR 4s ease-out 0.5s forwards;
+    animation-play-state: paused;
+}
+
+.stranger .normal-letters {
+    display: inline-block;
+}
+
+.stranger .normal-letters span {
+    display: inline-block;
+    opacity: 0;
+    filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+}
+
+@keyframes letterS {
+    0% {
+        transform: translate(-350px, 0px);
+        opacity: 0;
+        filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+    }
+
+    70% {
+        opacity: 0;
+        filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+        filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+    }
+}
+
+@keyframes letterFromTop {
+    0% {
+        transform: translate(0, -250px);
+        opacity: 0;
+        filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+    }
+
+    70% {
+        opacity: 0;
+        filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+        filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+    }
+}
+
+@keyframes letterR {
+    0% {
+        transform: translate(350px, 0px);
+        opacity: 0;
+        filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+    }
+
+    70% {
+        opacity: 0;
+        filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+        filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+    }
+}
+
+/* Stranger üzerindeki çift çizgi */
+.stranger::before {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: 50%;
+    right: 50%;
+    height: 6px;
+    background: transparent;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    box-shadow: 0 0 0px rgba(255, 0, 0, 0);
+    border-radius: 3px;
+    opacity: 0;
+    animation: none;
+}
+
+body.animating .stranger::before {
+    animation: expandLine 2s ease-out 4.5s forwards;
+    animation-play-state: running;
+}
+
+@keyframes expandLine {
+    0% {
+        left: 50%;
+        right: 50%;
+        opacity: 0;
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        box-shadow: 0 0 0px rgba(255, 0, 0, 0);
+    }
+
+    100% {
+        left: 0;
+        right: 0;
+        opacity: 1;
+        border-top: 3px solid #ff1a1a;
+        border-bottom: 3px solid #ff1a1a;
+        border-left: 3px solid #ff1a1a;
+        border-right: 3px solid #ff1a1a;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+}
+
+/* Things yazısı ve yanındaki çizgiler */
+.things-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+}
+
+.things {
+    font-size: 6rem;
+    position: relative;
+    line-height: 1 !important;
+    transform: scaleY(1.2);
+    display: inline-block;
+}
+
+.things .letter {
+    display: inline-block;
+    opacity: 0;
+    filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+}
+
+.things .letter:nth-child(1) {
+    animation: thingsFromBottom 4s ease-out 0.7s forwards;
+    animation-play-state: paused;
+    transform: translate(0px, 250px);
+}
+
+.things .letter:nth-child(2) {
+    animation: thingsFromBottom 4s ease-out 1s forwards;
+    animation-play-state: paused;
+    transform: translate(0px, 250px);
+}
+
+.things .letter:nth-child(3) {
+    animation: thingsFromBottom 4s ease-out 0.4s forwards;
+    animation-play-state: paused;
+    transform: translate(0px, 250px);
+}
+
+.things .letter:nth-child(4) {
+    animation: thingsFromBottom 4s ease-out 1.2s forwards;
+    animation-play-state: paused;
+    transform: translate(0px, 250px);
+}
+
+.things .letter:nth-child(5) {
+    animation: thingsFromBottom 4s ease-out 0.9s forwards;
+    animation-play-state: paused;
+    transform: translate(0px, 250px);
+}
+
+.things .letter:nth-child(6) {
+    animation: thingsFromBottom 4s ease-out 0.6s forwards;
+    animation-play-state: paused;
+    transform: translate(0px, 250px);
+}
+
+@keyframes thingsFromBottom {
+
+    0%,
+    70% {
+        opacity: 0;
+        filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+        transform: translate(0px, 250px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+        filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+    }
+}
+
+/* Yan çizgiler */
+.side-line {
+    width: 0;
+    height: 6px;
+    background: transparent;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    box-shadow: 0 0 0px rgba(255, 0, 0, 0);
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-radius: 3px;
+    opacity: 0;
+    animation: expandSideLine 2s ease-out 4.5s forwards;
+    animation-play-state: paused;
+}
+
+@keyframes expandSideLine {
+    0% {
+        width: 0;
+        opacity: 0;
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        box-shadow: 0 0 0px rgba(255, 0, 0, 0);
+    }
+
+    100% {
+        width: 100px;
+        opacity: 1;
+        border-top: 3px solid #ff1a1a;
+        border-bottom: 3px solid #ff1a1a;
+        border-left: 3px solid #ff1a1a;
+        border-right: 3px solid #ff1a1a;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+}
+
+.things-row .side-line:first-child {
+    margin: 0 10px 0 0;
+}
+
+.things-row .side-line:last-child {
+    margin: 0 0 0 10px;
+}
+
+/* Input controls */
+.controls {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    z-index: 10;
+    transition: opacity 1s ease-out;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-box label {
+    color: #ff1a1a;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.input-box input {
+    background: transparent;
+    border: none;
+    border-top: 2px solid #ff1a1a;
+    border-bottom: 2px solid #ff1a1a;
+    color: #ff1a1a;
+    padding: 8px 12px;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    width: 100px;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    transition: all 0.3s;
+    font-family: 'Crimson Text', serif;
+}
+
+.input-box input:focus {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+    border-top: 2px solid #ff3333;
+    border-bottom: 2px solid #ff3333;
+}
+
+.start-btn {
+    background: transparent;
+    border: 2px solid #ff1a1a;
+    color: #ff1a1a;
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s;
+    font-family: 'Crimson Text', serif;
+    font-weight: 700;
+}
+
+.start-btn:hover {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+    border-color: #ff3333;
+    color: #ff3333;
+}
+
+.start-btn:active {
+    transform: scale(0.95);
+}
+
+/* Input controls */
+.controls {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+    transition: opacity 1s ease-out;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-box label {
+    color: #ff1a1a;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.input-box input {
+    background: transparent;
+    border: none;
+    border-top: 2px solid #ff1a1a;
+    border-bottom: 2px solid #ff1a1a;
+    color: #ff1a1a;
+    padding: 8px 15px;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    width: 120px;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    transition: all 0.3s;
+}
+
+.input-box input:focus {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+    border-top: 2px solid #ff3333;
+    border-bottom: 2px solid #ff3333;
+}
+
+.input-box input.correct {
+    border-top: 2px solid #00ff00;
+    border-bottom: 2px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    color: #00ff00;
+}
+
+/* Initial screen */
+.initial-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.initial-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.initial-logo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.click-text {
+    position: fixed;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+    text-transform: uppercase;
+    z-index: 200;
+}
+
+.click-text.visible {
+    animation: textPulse 2s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+}
+
+.click-text:hover {
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Initial screen static styles */
+.initial-screen .stranger .big-letter {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+}
+
+.initial-screen .stranger::before {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: 0;
+    right: 0;
+    height: 6px;
+    opacity: 1;
+    border-top: 3px solid #ff1a1a;
+    border-bottom: 3px solid #ff1a1a;
+    border-left: 3px solid #ff1a1a;
+    border-right: 3px solid #ff1a1a;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    border-radius: 3px;
+}
+
+/* Controls animation */
+@keyframes slideDown {
+    from {
+        transform: translateX(-50%) translateY(-100vh);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+.controls.slide-in {
+    animation: slideDown 0.8s ease-out forwards;
+}
+
+.reset-btn {
+    background: transparent;
+    border: 2px solid #ff1a1a;
+    color: #ff1a1a;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    transition: all 0.3s;
+    font-family: 'Crimson Text', serif;
+    font-weight: 700;
+}
+
+.reset-btn:hover {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+    border-color: #ff3333;
+    color: #ff3333;
+}
+
+.reset-btn:active {
+    transform: scale(0.95);
+}
+
+/* Season Navigation */
+.season-navigation {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 300;
+}
+
+.season-btn {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #ff1a1a;
+    color: #ff1a1a;
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: 'Crimson Text', serif;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    position: relative;
+}
+
+.season-btn:hover {
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+    border-color: #ff3333;
+    color: #ff3333;
+    transform: scale(1.1);
+}
+
+.season-btn.active {
+    background: #ff1a1a;
+    color: #fff;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
+    border-color: #ff3333;
+}
+
+.season-btn.active::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+}
+
+.season-btn:active {
+    transform: scale(0.95);
+}
+
+/* Start Music Overlay */
+.start-music-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.start-music-btn {
+    background: transparent;
+    border: 3px solid #ff1a1a;
+    color: #ff1a1a;
+    padding: 20px 60px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+    transition: transform 1.5s ease-out, opacity 1.5s ease-out, box-shadow 1.3s, border-color 1.3s, color 1.3s;
+    font-family: 'Crimson Text', serif;
+    font-weight: 900;
+    animation: buttonPulse 2s ease-in-out infinite;
+}
+
+.start-music-btn:hover {
+    box-shadow: 0 0 50px rgba(255, 0, 0, 1);
+    border-color: #ff3333;
+    color: #ff3333;
+    transform: scale(1.05);
+}
+
+.start-music-btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.9);
+    }
+}

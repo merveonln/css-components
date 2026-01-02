@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stranger Things 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background music -->
+    <audio id="introMusic" loop>
+    </audio>
+
+    <!-- Start Music Button -->
+    <div class="start-music-overlay" id="startMusicOverlay">
+        <button class="start-music-btn" id="startMusicBtn">CLICK TO START</button>
+    </div>
+
+    <!-- Season Navigation -->
+    <div class="season-navigation" id="seasonNav">
+        <button class="season-btn" onclick="changeSeason(5)" data-season="5">5</button>
+        <button class="season-btn" onclick="changeSeason(4)" data-season="4">4</button>
+        <button class="season-btn" onclick="changeSeason(3)" data-season="3">3</button>
+        <button class="season-btn" onclick="changeSeason(2)" data-season="2">2</button>
+        <button class="season-btn" onclick="changeSeason(1)" data-season="1">1</button>
+    </div>
+
+    <!-- Click text overlay -->
+    <div class="click-text" id="clickText" style="opacity: 0; pointer-events: none;" onclick="showInputs()">Click to
+        customize</div>
+
+    <div class="controls" id="controlsPanel" style="opacity: 0; pointer-events: none;">
+        <div class="input-box">
+            <label>Word 1</label>
+            <input type="text" id="input1" placeholder="?" maxlength="8">
+        </div>
+        <div class="input-box">
+            <label>Word 2</label>
+            <input type="text" id="input2" placeholder="?" maxlength="6">
+        </div>
+        <div class="input-box">
+            <label>Number</label>
+            <input type="text" id="input3" placeholder="?" maxlength="1">
+        </div>
+        <button class="start-btn" onclick="startAnimation()">START</button>
+        <button class="reset-btn" onclick="resetToIntro()">RESET</button>
+    </div>
+
+    <div class="container" id="mainContainer">
+        <div class="number-5" id="numberDisplay">5</div>
+        <div class="logo-wrapper">
+            <span class="text stranger">
+                <span class="big-letter" id="firstLetter">S</span><span class="normal-letters" id="middleLetters"><span
+                        style="display: inline-block; animation: letterFromTop 4s ease-out 0.8s forwards; animation-play-state: paused;"
+                        class="anim-letter">t</span><span
+                        style="display: inline-block; animation: letterFromTop 4s ease-out 1.1s forwards; animation-play-state: paused;"
+                        class="anim-letter">r</span><span
+                        style="display: inline-block; animation: letterFromTop 4s ease-out 0.5s forwards; animation-play-state: paused;"
+                        class="anim-letter">a</span><span
+                        style="display: inline-block; animation: letterFromTop 4s ease-out 1.3s forwards; animation-play-state: paused;"
+                        class="anim-letter">n</span><span
+                        style="display: inline-block; animation: letterFromTop 4s ease-out 0.9s forwards; animation-play-state: paused;"
+                        class="anim-letter">g</span><span
+                        style="display: inline-block; animation: letterFromTop 4s ease-out 1.5s forwards; animation-play-state: paused;"
+                        class="anim-letter">e</span></span><span class="big-letter" id="lastLetter">r</span>
+            </span>
+            <div class="things-row">
+                <div class="side-line"></div>
+                <span class="text things" id="thingsText">
+                    <span class="letter">T</span><span class="letter">h</span><span class="letter">ı</span><span
+                        class="letter">n</span><span class="letter">g</span><span class="letter">s</span>
+                </span>
+                <div class="side-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
